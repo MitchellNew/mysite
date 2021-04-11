@@ -1,0 +1,108 @@
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+{% endblock %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Holiday Cards Inc.</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/welcome">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Holiday Cards Available</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Customers
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/customerTable">See our Customers</a>
+            <a class="dropdown-item disabled" href="#">Subscribe To Us <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block form %}
+<form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
+
+{% block content %}
+    <div class="text-left" style="background: rgb(50, 50, 255)">
+        <h3 class="h3 font-weight-bold text-center" style="color: goldenrod"> Special Offer</h3>
+        
+            <p style="color: goldenrod">
+                Are you looking for a monthly subscription of holiday cards to be sent to your door at the start of every month?
+                Then subscribe to our delivery service and get a 5% discount on your first three (3) boxes.
+            </p>
+            <p style="color: goldenrod">
+                Deliveries are within the local tri-county area only.
+                We will expand our range once we have enough resources to do so.
+            </p>
+    </div>
+
+    <div class="container justify-content-center">
+        <form action="{{ url_for('addcustomer')}}" method="POST">
+            First Name<br>
+                <input class="form-control" type="text" name="fname">
+            <br>
+
+            Last Name<br>
+                <input class="form-control" type="text" name="lname">
+            <br>
+
+            Email<br>
+                <small id="emailHelp" class="form-text text-muted">Security is part of our mission statement. As such we'll never share your email with anyone else.</small>
+                <input class="form-control" type="text" name="email">
+            <br>
+
+            Address<br>
+                <input class="form-control" type="text" name=address>
+            <br>
+
+            Street<br>
+                <input class="form-control" type="text" name="street">
+            <br>
+
+            City<br>
+                <input class="form-control" type="text" name="city">
+            <br>
+
+            Home Phone Number<br>
+                <input class="form-control" type="tel" name="hpnum">
+            <br>
+
+            <input class="btn btn-outline-success" type="submit" name="Submit">
+        </form>
+    </div>
+{% endblock %}
